@@ -119,14 +119,14 @@ console.log("This file last modified " + docMod); // generates message in javaSc
         }
 
 	  const img = new Image();
-    img.src = 'https://github.com/DaisyMoran-3276/App6-HTML5-Canvas/blob/gh-pages/image.png?raw=true';  
+    	  img.src = 'https://github.com/DaisyMoran-3276/App6-HTML5-Canvas/blob/gh-pages/image.png?raw=true';  
 
     
-    img.onload = function() {
+    	  img.onload = function() {
         
-        document.getElementById('imageButton').addEventListener('click', () => {
+       		 document.getElementById('imageButton').addEventListener('click', () => {
             
-            ctx.drawImage(img, 50, 150, 150, 150);
+           		 ctx.drawImage(img, 50, 150, 150, 150);
         });
         
         
