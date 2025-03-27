@@ -118,13 +118,15 @@ console.log("This file last modified " + docMod); // generates message in javaSc
              ctx.fillText("Daisy Moran", 100, 50); 
         }
 
-	 const img = new Image();
-	 img.src = 'https://github.com/DaisyMoran-3276/App6-HTML5-Canvas/blob/gh-pages/image.png?raw=true';
+	  const img = new Image();
+    img.src = 'https://github.com/DaisyMoran-3276/App6-HTML5-Canvas/blob/gh-pages/image.png?raw=true';  
 
-	 img.onload = function() {
-	 
-	  document.getElementById('imageButton').addEventListener('click', () => {
-             ctx.drawImage(img, 50, 150, 150, 150);
+    
+    img.onload = function() {
+        
+        document.getElementById('imageButton').addEventListener('click', () => {
+            
+            ctx.drawImage(img, 50, 150, 150, 150);
         });
         
         
