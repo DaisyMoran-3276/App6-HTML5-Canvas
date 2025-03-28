@@ -89,71 +89,71 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 </footer>
 
 	<script>
-    const canvas = document.getElementById('myCanvas');
-    const ctx = canvas.getContext('2d');
+    const canvas = document.getElementById('myCanvas'); //  looks through the HTML document for an element with the id of "myCanvas" and returns that
+    const ctx = canvas.getContext('2d'); // tells the code the drawings will be 2D
     
-    // Create a new image element
+    // Creates a new image element
     const img = new Image(); 
     
-    // Use the original image from GitHub.
+    // gives the code the link to the image I want it to insert onto the canvas
     img.src = "https://raw.githubusercontent.com/DaisyMoran-3276/App6-HTML5-Canvas/gh-pages/e83343f654a670939e13fb38b15782e6.jpg"; 
 
-    let imageLoaded = false;
+    let imageLoaded = false; // I created a variable called imageLoaded that keeps track of the image loading, by default the image is not loading
 
-    // Image loaded successfully
+    // Created  variable so that if it's true the image loads, then the console will say Image loaded successfully
     img.onload = function () {
         console.log("Image loaded successfully.");
         imageLoaded = true;
     };
 
-    // Error loading image
+    // Created  variable so that if it's not true the image loads, then the console will say Error loading the image
     img.onerror = function () {
         console.log("Error loading the image.");
     };
 
-    // Draw rectangle when the button is clicked
+    // Draws the rectangle when the Draw Rectangle button is clicked
     document.getElementById('drawButton').addEventListener('click', () => {
         drawRectangle();
     });
 
     function drawRectangle() {
-        ctx.fillStyle = '#87CEEB';
-        ctx.fillRect(50, 25, 100, 50);
+        ctx.fillStyle = '#87CEEB'; // Gives the rectangle its light blue color
+        ctx.fillRect(50, 25, 100, 50); // The first two numbers are the coordinates of where the rectangle is drawn (50= how far the rectangle will be from the left edge of the canvas, 25=  how far the rectangle will be from the top edge of the canvas), the last numbers are its dimensions (100= width, 50=height)
     }
 
-    // Write name on the canvas when the button is clicked
+    // Writes my name on the canvas when the Write Name button is clicked
     document.getElementById('textButton').addEventListener('click', () => {
         writeName();
     });
 
     function writeName() {
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "black";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText("Daisy Moran", 100, 50);
+        ctx.font = "20px Arial";// font type and size of the text
+        ctx.fillStyle = "black";// color of text
+        ctx.textAlign = "center";// placement of text
+        ctx.textBaseline = "middle";//placement of text
+        ctx.fillText("Daisy Moran", 100, 50);// What the text will say (Daisy Moran), 100= how far the text will be from the left edge of the canvas, 50=  how far the text will be from the top edge of the canvas
     }
 
-    // Draw image on the canvas once it's loaded
+    // Draws image on the canvas when the Add Image button is pressed and once it's loaded
     document.getElementById('imageButton').addEventListener('click', () => {
         if (imageLoaded) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas before drawing the new image
-            console.log("Drawing image at center"); // Debug log to check the draw position
+            ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clears the canvas before drawing the new image
+            console.log("Drawing image at center"); // Debug console.log to check the drawing position and make sure it is centered
             
-            // Calculate the center of the canvas
+            // Calculates the center of the canvas
             const imgWidth = 150;  // Desired image width
             const imgHeight = 150; // Desired image height
             const x = (canvas.width - imgWidth) / 2;  // Center X position
             const y = (canvas.height - imgHeight) / 2; // Center Y position
             
-            // Draw the image in the center of the canvas
+            // Draws the image in the center of the canvas
             ctx.drawImage(img, x, y, imgWidth, imgHeight);
         } else {
-            console.log("Image not loaded yet.");
+            console.log("Image not loaded yet."); // Console alerts me if the Image hasn't loaded it yet
         }
     });
 
-		// Clear everything on the canvas when the Clear button is pressed
+		// Clears everything on the canvas when the Clear Canvas button is pressed
     document.getElementById('clearButton').addEventListener('click', () => {
         clearCanvas();
     });
