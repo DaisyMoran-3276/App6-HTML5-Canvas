@@ -153,10 +153,16 @@ console.log("This file last modified " + docMod); // generates message in javaSc
         }
     });
 
-		 function clearCanvas() {
-        		ctx.clearRect(0, 0, canvas.width, canvas.height); // Clears the entire canvas
-        		console.log("Canvas cleared!");
+		// Clear everything on the canvas when the Clear button is pressed
+    document.getElementById('clearButton').addEventListener('click', () => {
+        clearCanvas();
+    });
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clears the entire canvas
+        
     }
+		
 		
 </script>
 
