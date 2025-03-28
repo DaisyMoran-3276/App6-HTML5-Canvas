@@ -86,53 +86,52 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 	<p>DIY!</p>
 </footer>
 
- <script>
-        
+	 <script>
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
-
-        
-        document.getElementById('drawButton').addEventListener('click', () => {
-            drawRectangle();
-        });
-        
-        function drawRectangle() {
-            ctx.fillStyle = '#87CEEB';
-            ctx.fillRect(50, 25, 100, 50); 
-        }
-
-        
-        document.getElementById('textButton').addEventListener('click', () => {
-            writeName();
-        });
-        
-        function writeName() {
-             ctx.font = "20px Arial"; 	
-	     ctx.fillStyle = "black";  
-
-        
-             ctx.textAlign = "center"; 
-             ctx.textBaseline = "middle"; 
-
-       
-             ctx.fillText("Daisy Moran", 100, 50); 
-        }
- 
-const img = new Image();
+        const img = new Image();
         img.src = 'https://raw.githubusercontent.com/DaisyMoran-3276/App6-HTML5-Canvas/gh-pages/e83343f654a670939e13fb38b15782e6.jpg';
+
+        let imageLoaded = false; 
 
         img.onload = function () {
             console.log("Image loaded successfully.");
-            document.getElementById('imageButton').addEventListener('click', () => {
-                ctx.drawImage(img, 50, 150, 150, 150);
-            });
+            imageLoaded = true;
         };
 
         img.onerror = function () {
             console.log("Error loading the image.");
         };
-	  
-   
-</script>
+
+        document.getElementById('drawButton').addEventListener('click', () => {
+            drawRectangle();
+        });
+
+        function drawRectangle() {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(50, 25, 100, 50);
+        }
+
+        document.getElementById('textButton').addEventListener('click', () => {
+            writeName();
+        });
+
+        function writeName() {
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("Daisy Moran", 100, 50);
+        }
+
+        document.getElementById('imageButton').addEventListener('click', () => {
+            if (imageLoaded) {
+                ctx.drawImage(img, 50, 150, 150, 150);
+            } else {
+                console.log("Image not yet loaded.");
+            }
+        });
+    </script>
+
 </body>
 </html>
