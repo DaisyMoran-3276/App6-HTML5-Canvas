@@ -86,47 +86,53 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 	<p>DIY!</p>
 </footer>
 
-	 <script>
-        const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-        img id="cat" src="https://raw.githubusercontent.com/DaisyMoran-3276/App6-HTML5-Canvas/gh-pages/e83343f654a670939e13fb38b15782e6.jpg" alt="The Cat" width="150" height="150"
+	<script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    const img = new Image(); // Create an image element
+    img.src = "https://raw.githubusercontent.com/DaisyMoran-3276/App6-HTML5-Canvas/gh-pages/e83343f654a670939e13fb38b15782e6.jpg"; // Set image source
 
-        let imageLoaded = false; 
+    let imageLoaded = false;
 
-        img.onload = function () {
-            console.log("Image loaded successfully.");
-            imageLoaded = true;
-        };
+    img.onload = function () {
+        console.log("Image loaded successfully.");
+        imageLoaded = true;
+    };
 
-        img.onerror = function () {
-            console.log("Error loading the image.");
-        };
+    img.onerror = function () {
+        console.log("Error loading the image.");
+    };
 
-        document.getElementById('drawButton').addEventListener('click', () => {
-            drawRectangle();
-        });
+    document.getElementById('drawButton').addEventListener('click', () => {
+        drawRectangle();
+    });
 
-        function drawRectangle() {
-            ctx.fillStyle = '#87CEEB';
-            ctx.fillRect(50, 25, 100, 50);
+    function drawRectangle() {
+        ctx.fillStyle = '#87CEEB';
+        ctx.fillRect(50, 25, 100, 50);
+    }
+
+    document.getElementById('textButton').addEventListener('click', () => {
+        writeName();
+    });
+
+    function writeName() {
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("Daisy Moran", 100, 50);
+    }
+
+    document.getElementById('imageButton').addEventListener('click', () => {
+        if (imageLoaded) {
+            ctx.drawImage(img, 50, 150); // Draw the image once it's loaded
+        } else {
+            console.log("Image not loaded yet.");
         }
-
-        document.getElementById('textButton').addEventListener('click', () => {
-            writeName();
-        });
-
-        function writeName() {
-            ctx.font = "20px Arial";
-            ctx.fillStyle = "black";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText("Daisy Moran", 100, 50);
-        }
-
-        document.getElementById('imageButton').addEventListener('click', () => {
-            ctx.drawImage(img,50,150);
-        });
-    </script>
+    });
+</script>
 
 </body>
 </html>
