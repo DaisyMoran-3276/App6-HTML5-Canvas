@@ -90,20 +90,26 @@ console.log("This file last modified " + docMod); // generates message in javaSc
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
     
-    const img = new Image(); // Create an image element
-    img.src = "https://raw.githubusercontent.com/DaisyMoran-3276/App6-HTML5-Canvas/gh-pages/e83343f654a670939e13fb38b15782e6.jpg"; // Set image source
+    // Create a new image element
+    const img = new Image(); 
+    
+    // Use the original image from GitHub.
+    img.src = "https://raw.githubusercontent.com/DaisyMoran-3276/App6-HTML5-Canvas/gh-pages/e83343f654a670939e13fb38b15782e6.jpg"; 
 
     let imageLoaded = false;
 
+    // Image loaded successfully
     img.onload = function () {
         console.log("Image loaded successfully.");
         imageLoaded = true;
     };
 
+    // Error loading image
     img.onerror = function () {
         console.log("Error loading the image.");
     };
 
+    // Draw rectangle when the button is clicked
     document.getElementById('drawButton').addEventListener('click', () => {
         drawRectangle();
     });
@@ -113,6 +119,7 @@ console.log("This file last modified " + docMod); // generates message in javaSc
         ctx.fillRect(50, 25, 100, 50);
     }
 
+    // Write name on the canvas when the button is clicked
     document.getElementById('textButton').addEventListener('click', () => {
         writeName();
     });
@@ -125,9 +132,20 @@ console.log("This file last modified " + docMod); // generates message in javaSc
         ctx.fillText("Daisy Moran", 100, 50);
     }
 
+    // Draw image on the canvas once it's loaded
     document.getElementById('imageButton').addEventListener('click', () => {
         if (imageLoaded) {
-            ctx.drawImage(img, 50, 50); // Draw the image once it's loaded
+            ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas before drawing the new image
+            console.log("Drawing image at center"); // Debug log to check the draw position
+            
+            // Calculate the center of the canvas
+            const imgWidth = 150;  // Desired image width
+            const imgHeight = 150; // Desired image height
+            const x = (canvas.width - imgWidth) / 2;  // Center X position
+            const y = (canvas.height - imgHeight) / 2; // Center Y position
+            
+            // Draw the image in the center of the canvas
+            ctx.drawImage(img, x, y, imgWidth, imgHeight);
         } else {
             console.log("Image not loaded yet.");
         }
